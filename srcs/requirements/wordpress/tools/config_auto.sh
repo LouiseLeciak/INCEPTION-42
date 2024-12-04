@@ -29,5 +29,4 @@ chmod -R g+w /var/www/html
 chmod 755 -R /var/www/html/wp-content
 fi
 
-/usr/sbin/php-fpm7.4 -F
-exec "$@"
+exec /usr/sbin/php-fpm7.4 -F
