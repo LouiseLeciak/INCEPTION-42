@@ -6,15 +6,14 @@
 #    By: lleciak <lleciak@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/03 13:00:59 by lleciak           #+#    #+#              #
-#    Updated: 2024/12/03 13:03:07 by lleciak          ###   ########.fr        #
+#    Updated: 2024/12/04 12:20:19 by lleciak          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 all:
-	mkdir -p /home/lleciak/data/wordpress
-	mkdir -p /home/lleciak/data/mariadb
+	mkdir -p ~/data/wordpress
+	mkdir -p ~/data/mariadb
 	docker compose -f ./srcs/docker-compose.yml up --build
-	cd -
 
 down:
 	docker compose -f ./srcs/docker-compose.yml down
@@ -25,6 +24,10 @@ re:
 clean:
 	docker volume rm -f $$(docker volume ls -q) 
 	docker system prune -af
+	
+cleanvolume:
+	sudo rm -rf ~/data/wordpress
+	sudo rm -rf ~/data/mariadb
 
 .PHONY:
 	all down re clear
