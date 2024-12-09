@@ -6,7 +6,7 @@
 #    By: lleciak <lleciak@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/03 13:00:59 by lleciak           #+#    #+#              #
-#    Updated: 2024/12/04 12:20:19 by lleciak          ###   ########.fr        #
+#    Updated: 2024/12/09 12:56:48 by lleciak          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ clean:
 	docker volume rm -f $$(docker volume ls -q) 
 	docker system prune -af
 	
-cleanvolume:
+cleanvolumes:
 	sudo rm -rf ~/data/wordpress
 	sudo rm -rf ~/data/mariadb
 

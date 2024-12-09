@@ -1,11 +1,15 @@
+# permet de gerer des applications qui utilisent plusieurs containers
+# et de communiquer entre eux
+
+# les volumes permettent la persistence des donnees, stocke en local
 volumes:
   wordpress_database:
     name: wordpress
-    driver: local
+    driver: local # Stocker en local
     driver_opts:
-      type: none
-      device: /home/lleciak/data/wordpress
-      o: bind
+      type: none # aucun type specifiaue
+      device: /home/lleciak/data/wordpress # ou stocker le dossier
+      o: bind # Les Bind Mounts sont des volumes qui se montent sur un chemin d'accès à l'hôte, et ils peuvent être modifiés par d'autres processus en dehors de docker.
 
   mariadb_database:
     name: mariadb
@@ -18,24 +22,24 @@ volumes:
 networks:
   inception:
     name: inception
-    driver: bridge
+    driver: bridge # indique a docker d'installer automatiquement des regles qui eprmettront aux 3 containers de communiquer en bridge
 
 services:
   nginx:
-    container_name: nginx
+    container_name: nginx # nom du container
     volumes:
        - wordpress_database:/var/www/html/
-    networks:
+    networks: # a quel network il a ppartient
       - inception
-    depends_on:
+    depends_on: # ne pas demarrer nginx tant que wp n'a pas demarre
       - wordpress
     build:
-      context: ./requirements/nginx
+      context: ./requirements/nginx # ou se trouve le dockerfile
       dockerfile: Dockerfile
     env_file: .env
     ports:
-      - "443:443"
-    restart: on-failure
+      - "443:443" # le port expose a la machine locale
+    restart: on-failure # redemarre en cas de crash
        
   mariadb:
     container_name: mariadb

@@ -24,6 +24,7 @@ wp core install --url=lleciak.42.fr --title=inception --admin_user=lleciak \
 				--admin_password=lleciak42 --admin_email=lleciak@student.42.fr \
 				--allow-root
 
+# creation du deuxieme user demande par le sujet
 wp user create $WP_USR $WP_EMAIL --role=author --user_pass=$WP_PWD --allow-root
 
 chown -R www-data:0 /var/www/html
