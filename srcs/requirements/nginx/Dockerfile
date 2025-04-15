@@ -9,7 +9,7 @@ RUN mkdir -p /etc/nginx/ssl
 RUN apt-get install -y openssl
 
 #generer un certificat ssl afin de creer un certificat TSL/SSL
-RUN openssl req -x509 -nodes -out /etc/nginx/ssl/inception.crt -keyout /etc/nginx/ssl/inception.key -subj "/C=FR/ST=IDF/L=Paris/O=42/OU=42/CN=jdoukhan.42.fr/UID=jdoukhan"
+RUN openssl req -x509 -nodes -out /etc/nginx/ssl/inception.crt -keyout /etc/nginx/ssl/inception.key -subj "/C=FR/ST=IDF/L=Paris/O=42/OU=42/CN=lleciak.42.fr/UID=lleciak"
 
 #stocker les fichier de config NGINX
 RUN mkdir -p /var/run/nginx
